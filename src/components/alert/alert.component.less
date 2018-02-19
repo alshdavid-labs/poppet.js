@@ -1,0 +1,74 @@
+.host {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	font-family: sans-serif;
+
+	article {
+		padding: 15px;
+		display: inline-block;
+		width: 300px;
+		position: relative;
+		z-index: 2;
+		background-color: white;
+		border-radius: 4px;
+		text-align: center;
+		border: 3px #d9d9d9 solid;
+	}
+
+	p {
+		padding: 0 0 15px 0;
+	}
+	
+	button {
+		width: 48%;
+		box-sizing: border-box;
+		padding: 10px 0;
+		background: #e0e0e0;
+		//color:white;
+		border: 1px #d9d9d9 solid;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: .25s opacity;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&:focus, &:active {
+			outline: none;
+		}
+	}
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.zoomIn {
+		animation: kf_zoom_in .2s forwards;
+	}
+	
+	.zoomOut {
+		animation: kf_zoom_out .2s forwards;
+	}
+
+
+	@keyframes kf_zoom_in {
+		from { transform: scale(0.8) }
+		to { transform: scale(1) }
+	}
+
+	@keyframes kf_zoom_out {
+		from { transform: scale(1) }
+		to { transform: scale(0.8) }
+	}
+}
+
+

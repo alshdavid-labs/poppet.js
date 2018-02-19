@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<script>
+			function run(){
+				Popups.alert('This is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alert')
+					.then(x => console.log('Ok'))
+					.catch(x => console.log('Cancel'))
+			}	
+
+			function input(){
+				Popups.input('This is an alert')
+					.then(x => console.log(x))
+					.catch(x => console.log('Canceled'))
+			}	
+
+			function input(){
+				Popups.list('This is an alert', ['one', 'two', 'three'])
+					.then(x => console.log(x))
+					.catch(x => console.log('Canceled'))
+			}	
+		</script>
+		<button onclick="run()">Open Alert</button>
+		<button onclick="input()">Open Input</button>
+		<button onclick="list()">Open List Selector</button>
+		<div class="test">asd</div>
+	</body>
+</html>
