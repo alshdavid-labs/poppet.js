@@ -1,21 +1,25 @@
-import { h, render } from 'preact';
-//import * as alertComponent from './components/alert/alert.component'
-
+import { h, render, Component } from 'preact';
 import { renderAlertComponent } from './components/alert/alert.component'
 import { renderInputComponent } from './components/input/input.component'
+import { renderListSelectorComponent } from './components/list-selector/list-selector.component'
 
-class Popups {
-	static alert(message = 'No Message'){
+
+class Poppet {
+	static alert(message) {
 		return renderAlertComponent(message)
 	}
 
-	static input(message){
-		return renderInputComponent(message)
+	static input(message, placeholder) {
+		return renderInputComponent(message, placeholder)
 	}
 
-	static list(message){
-		return renderInputComponent(message)
+	static list(message, list) {
+		return renderListSelectorComponent(message, list)
+	}
+
+	static ListItem = function(label, value){
+		return { label, value }
 	}
 }
 
-global.Popups = Popups
+global.Poppet = Poppet

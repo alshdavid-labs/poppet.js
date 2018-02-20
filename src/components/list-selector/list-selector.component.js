@@ -1,10 +1,10 @@
 import { h, render, Component } from 'preact';
-import styles from './input.component.less'
+import styles from './list-selector.component.less'
 import { appendComponent, removeComponent } from '../../services/popups.service'
 import { BackgroundComponent } from '../background/background.component'
 import { AnimationComponent } from "../animation/animation.component"
 
-export class InputComponent extends Component {
+export class ListSelectorComponent extends Component {
 	constructor(){
 		super()
 		this.state = {
@@ -42,14 +42,17 @@ export class InputComponent extends Component {
 				<AnimationComponent animate={this.state.doAnimation}>
 					<article>
 						{ this.props.message && <p>{this.props.message}</p> }
-						<input
-							value={this.state.text}
-							placeholder={this.props.placeholder}
-							onChange={this.handleChange} />
+						<ul>
+							{
+								this.props.list.map(
+									item => <li onClick={() => this.ok(item.value)}>{ item.label }</li>
+								)
+							}
+						</ul>
 						<div class={styles.container}>
 							<button
 								onClick={() => this.ok()}>
-								Ok
+								Select
 							</button>
 							<button
 								onClick={() => this.cancel()}>
@@ -65,10 +68,10 @@ export class InputComponent extends Component {
 
 
 
-export function renderInputComponent(message, placeholder) {
+export function renderListSelectorComponent(message, list) {
 	return new Promise((resolve, reject) => {
-		appendComponent(<InputComponent
-			placeholder={placeholder}
+		appendComponent(<ListSelectorComponent
+			list={list}
 			message={message}
 			ok={resolve}
 			cancel={reject}

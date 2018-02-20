@@ -11,7 +11,7 @@
 	font-family: sans-serif;
 
 	article {
-		padding: 15px;
+		padding: 5px 15px 15px 15px;
 		display: inline-block;
 		width: 300px;
 		position: relative;
@@ -22,18 +22,56 @@
 		border: 3px #d9d9d9 solid;
 	}
 
+	ul {
+		background: #fafafa;
+		border: 1px #e0e0e0 solid;
+		border-radius: 4px;
+		padding: 0;
+		max-height: 300px;
+		overflow-y: scroll;
+	}
+
+	li {
+		border-bottom: 1px #e0e0e0 solid;
+		list-style-type: none;
+		padding: 10px;
+		cursor: pointer;
+		transition: .25s background-color;
+
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:hover {
+			background-color: #eeeeee;
+		}
+	}
+
 	p {
-		padding: 0 0 15px 0;
+		padding: 0 0 5px 0;
+	}
+
+	input, button {
+		width: 48%;
+		box-sizing: border-box;
+		padding: 10px;
+		border: 1px #d9d9d9 solid;
+		border-radius: 4px;
+
+		&:focus, &:active {
+			outline: none;
+		}
+	}
+
+	input {
+		margin-bottom: 30px;
+		width: 100%;
 	}
 
 	button {
-		width: 48%;
-		box-sizing: border-box;
 		padding: 10px 0;
 		background: #e0e0e0;
-		//color:white;
-		border: 1px #d9d9d9 solid;
-		border-radius: 4px;
 		cursor: pointer;
 		transition: .25s opacity;
 

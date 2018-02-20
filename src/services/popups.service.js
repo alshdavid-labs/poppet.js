@@ -1,4 +1,5 @@
 import { render } from 'preact';
+import { config } from '../config'
 
 let outlet
 
@@ -9,11 +10,11 @@ export function appendComponent(element){
 
     outlet = document.createElement('div')
     outlet.style.opacity = 0
-    outlet.style.transition = 'opacity .2s'
+    outlet.style.transition = `opacity ${config.transitionTime}ms`
     document.body.appendChild(outlet)
     render(element, outlet, null)
     setTimeout(()=>outlet.style.opacity = 1, 10)
-    
+
 }
 
 export function removeComponent(){
@@ -22,6 +23,6 @@ export function removeComponent(){
         render('', outlet, null)
         document.body.removeChild(outlet)
         outlet = null
-    }, 230)
-    
+    }, config.transitionTime)
+
 }

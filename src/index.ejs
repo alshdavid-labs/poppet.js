@@ -4,22 +4,31 @@
 	<body>
 		<script>
 			function run(){
-				Popups.alert('This is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alert')
+				Poppet.alert('This is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alert')
 					.then(x => console.log('Ok'))
 					.catch(x => console.log('Cancel'))
-			}	
+			}
 
 			function input(){
-				Popups.input('This is an alert')
+				Poppet.input('What is your name?', 'Enter Name')
 					.then(x => console.log(x))
 					.catch(x => console.log('Canceled'))
-			}	
+			}
 
-			function input(){
-				Popups.list('This is an alert', ['one', 'two', 'three'])
+			function list(){
+				const myList = [
+					new Poppet.ListItem('One','one'),
+					new Poppet.ListItem('Two','two'),
+					new Poppet.ListItem('Three','three'),
+					new Poppet.ListItem('Four','four'),
+					Poppet.ListItem('Five','five'),
+					{ label: 'Six', value: 'six' }
+				]
+
+				Poppet.list('This is the text', myList)
 					.then(x => console.log(x))
-					.catch(x => console.log('Canceled'))
-			}	
+					.catch(x => console.log(x, 'Canceled'))
+			}
 		</script>
 		<button onclick="run()">Open Alert</button>
 		<button onclick="input()">Open Input</button>
