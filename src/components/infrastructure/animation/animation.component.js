@@ -1,6 +1,6 @@
 import { h, render, Component } from 'preact';
 import TransitionGroup from 'preact-transition-group'
-import { config } from '../../config'
+import { config } from '../../../config'
 import style from './animation.component.less'
 
 
@@ -38,7 +38,7 @@ export class AnimationComponent extends Component {
 	render(){
 		return (
 			<div style={{zIndex: 2, position: 'relative'}}>
-				<TransitionGroup>
+				<TransitionGroup>					
 					{
 						this.props.animate &&
 						<AnimatorComponent>{this.props.children}</AnimatorComponent>

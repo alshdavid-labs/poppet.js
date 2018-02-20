@@ -4,7 +4,7 @@
 	<body>
 		<script>
 			function run(){
-				Poppet.alert('This is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alertThis is an alert')
+				Poppet.alert('This is an alert')
 					.then(x => console.log('Ok'))
 					.catch(x => console.log('Cancel'))
 			}
@@ -22,7 +22,10 @@
 					new Poppet.ListItem('Three','three'),
 					new Poppet.ListItem('Four','four'),
 					Poppet.ListItem('Five','five'),
-					{ label: 'Six', value: 'six' }
+					{ label: 'Six', value: 'six' },
+					Poppet.ListItem('Five','five'),
+					Poppet.ListItem('Five','five'),
+					Poppet.ListItem('Five','five'),
 				]
 
 				Poppet.list('This is the text', myList)
