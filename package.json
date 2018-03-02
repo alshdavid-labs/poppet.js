@@ -23,8 +23,13 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "npm run watch",
+    "build": "npm run build:prod",
     "build:dev": "webpack --config ./config/webpack.dev.js --mode development",
     "build:prod": "webpack --config ./config/webpack.prod.js --mode production",
+    "watch": "npm run watch:dev",
+    "watch:dev": "webpack --watch --config ./config/webpack.dev.js --mode development",
+    "watch:prod": "webpack --watch --config ./config/webpack.prod.js --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
