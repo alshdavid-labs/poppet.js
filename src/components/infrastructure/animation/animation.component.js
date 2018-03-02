@@ -1,21 +1,21 @@
 import { h, render, Component } from 'preact';
 import TransitionGroup from 'preact-transition-group'
 import { config } from '../../../config'
-import style from './animation.component.less'
+import './animation.component.scss'
 
 
 export class AnimatorComponent extends Component {
 	constructor(){
 		super()
-		this.state = { doAnimate: undefined }
+		this.state = { doAnimate: true }
 	}
 
 	componentDidMount(){
-		this.setState({ doAnimate: style.animateIn })
+		this.setState({ doAnimate: true })
 	}
 
 	componentWillLeave(callback){
-		this.setState({ doAnimate: style.animateOut })
+		this.setState({ doAnimate: false })
 		setTimeout(() => callback(), config.transitionTime)
 	}
 
@@ -23,7 +23,7 @@ export class AnimatorComponent extends Component {
 	render(){
 		return (
 			<div
-				className={ this.state.doAnimate }
+				className={'poppet-animation-host ' + (this.state.doAnimate ? 'animateIn' : 'animateOut')}
 				style={{
 					animationDuration: config.transitionTime + 'ms'
 				}}>
@@ -38,7 +38,7 @@ export class AnimationComponent extends Component {
 	render(){
 		return (
 			<div style={{zIndex: 2, position: 'relative'}}>
-				<TransitionGroup>					
+				<TransitionGroup>
 					{
 						this.props.animate &&
 						<AnimatorComponent>{this.props.children}</AnimatorComponent>

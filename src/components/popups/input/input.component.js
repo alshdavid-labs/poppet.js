@@ -1,5 +1,5 @@
 import { h, render, Component } from 'preact';
-import styles from './input.component.less'
+import './input.component.scss'
 import { appendComponent, removeComponent } from '../../../services/popups.service'
 import { PanelComponent, BackgroundComponent, AnimationComponent } from "../../infrastructure"
 
@@ -36,13 +36,13 @@ export class InputComponent extends Component {
 
 	render(){
 		return (
-			<div class={styles.host}>
+			<div classList="poppet-popup-input-host">
 				<BackgroundComponent onClick={() => this.cancel()} />
 				<AnimationComponent animate={this.state.doAnimation}>
 					<PanelComponent>
 						{ this.props.message && <p>{this.props.message}</p> }
 						<input value={this.state.text} placeholder={this.props.placeholder} onChange={this.handleChange} />
-						<div class={styles.container}>
+						<div classList="container">
 							<button onClick={() => this.ok()}>Ok</button>
 							<button onClick={() => this.cancel()}>Cancel</button>
 						</div>

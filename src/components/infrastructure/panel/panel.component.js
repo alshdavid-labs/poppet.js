@@ -1,10 +1,10 @@
 import { h, render, Component } from 'preact';
-import styles from './panel.component.less'
+import './panel.component.scss'
 
 export class PanelComponent extends Component {
 	render(){
 		return (
-			<div class={styles.host}>
+			<div classList="poppet-panel-host">
 				{this.props.children}
 			</div>
 		)

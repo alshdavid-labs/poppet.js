@@ -1,18 +1,16 @@
-.host {
+.poppet-animation-host {
 
+	&.animateIn {
+		animation-name: kf_zoom_in;
+		animation-fill-mode: forwards;
+	}
+
+	&.animateOut {
+		animation-name: kf_zoom_out;
+		animation-fill-mode: forwards;
+	}
 
 }
-
-.animateIn {
-	animation-name: kf_zoom_in;
-	animation-fill-mode: forwards;
-}
-
-.animateOut {
-	animation-name: kf_zoom_out;
-	animation-fill-mode: forwards;
-}
-
 
 @keyframes kf_zoom_in {
 	from { transform: scale(0.8) translate3d(0,30px,0) }
@@ -23,3 +21,5 @@
 	from { transform: scale(1) translate3d(0, 0px,0) }
 	to { transform: scale(0.8) translate3d(0, 30px,0) }
 }
+
+
