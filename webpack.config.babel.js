@@ -6,6 +6,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import OfflinePlugin from 'offline-plugin';
 import path from 'path';
 const ENV = process.env.NODE_ENV || 'development';
+const { join } = require('path');
 
 const CSS_MAPS = ENV!=='production';
 
@@ -22,13 +23,10 @@ module.exports = {
 	resolve: {
 		extensions: ['.jsx', '.js', '.json', '.less'],
 		modules: [
-			path.resolve(__dirname, "src/lib"),
 			path.resolve(__dirname, "node_modules"),
 			'node_modules'
 		],
 		alias: {
-			components: path.resolve(__dirname, "src/components"),    // used for tests
-			style: path.resolve(__dirname, "src/style"),
 			'react': 'preact-compat',
 			'react-dom': 'preact-compat'
 		}
@@ -48,57 +46,28 @@ module.exports = {
 				use: 'babel-loader'
 			},
 			{
-				// Transform our own .(less|css) files with PostCSS and CSS-modules
-				test: /\.(less|css)$/,
-				include: [path.resolve(__dirname, 'src/components')],
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [
-						{
-							loader: 'css-loader',
-							options: { modules: true, sourceMap: CSS_MAPS, importLoaders: 1, minimize: true }
-						},
-						{
-							loader: `postcss-loader`,
-							options: {
-								sourceMap: CSS_MAPS,
-								plugins: () => {
-									autoprefixer({ browsers: [ 'last 2 versions' ] });
-								}
-							}
-						},
-						{
-							loader: 'less-loader',
-							options: { sourceMap: CSS_MAPS }
+				test: /\.(sass|scss|less)$/,
+				use: [
+					{
+						loader: "style-loader"
+					},
+					{
+						loader: 'css-loader'
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: [
+								require('autoprefixer')({
+									browsers: ['last 3 version']
+								})
+							]
 						}
-					]
-				})
-			},
-			{
-				test: /\.(less|css)$/,
-				exclude: [path.resolve(__dirname, 'src/components')],
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: [
-						{
-							loader: 'css-loader',
-							options: { sourceMap: CSS_MAPS, importLoaders: 1, minimize: true }
-						},
-						{
-							loader: `postcss-loader`,
-							options: {
-								sourceMap: CSS_MAPS,
-								plugins: () => {
-									autoprefixer({ browsers: [ 'last 2 versions' ] });
-								}
-							}
-						},
-						{
-							loader: 'less-loader',
-							options: { sourceMap: CSS_MAPS }
-						}
-					]
-				})
+					},
+					{
+						loader: 'sass-loader'
+					}
+				]
 			},
 			{
 				test: /\.json$/,
@@ -127,11 +96,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './index.ejs',
 			minify: { collapseWhitespace: true }
-		}),
-		// new CopyWebpackPlugin([
-		// 	{ from: './manifest.json', to: './' },
-		// 	{ from: './favicon.ico', to: './' }
-		// ])
+		})
 	]).concat(ENV==='production' ? [
 		new webpack.optimize.UglifyJsPlugin({
 			output: {
@@ -161,24 +126,7 @@ module.exports = {
 				cascade: true,
 				drop_console: true
 			}
-		}),
-
-		// new OfflinePlugin({
-		// 	relativePaths: false,
-		// 	AppCache: false,
-		// 	excludes: ['_redirects'],
-		// 	ServiceWorker: {
-		// 		events: true
-		// 	},
-		// 	cacheMaps: [
-		// 		{
-		// 			match: /.*/,
-		// 			to: '/',
-		// 			requestTypes: ['navigate']
-		// 		}
-		// 	],
-		// 	publicPath: '/'
-		// })
+		})
 	] : []),
 
 	stats: { colors: true },
@@ -202,12 +150,6 @@ module.exports = {
 		historyApiFallback: true,
 		open: true,
 		openPage: '',
-		proxy: {
-			// OPTIONAL: proxy configuration:
-			// '/optional-prefix/**': { // path pattern to rewrite
-			//   target: 'http://target-host.com',
-			//   pathRewrite: path => path.replace(/^\/[^\/]+\//, '')   // strip first path segment
-			// }
-		}
+		proxy: {}
 	}
 };
