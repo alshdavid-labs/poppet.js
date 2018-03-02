@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<script>
+			function run(){
+				Poppet.alert('This is an alert')
+					.then(x => console.log('Ok'))
+					.catch(x => console.log('Cancel'))
+			}
+
+			function input(){
+				Poppet.input('What is your name?', 'Enter Name')
+					.then(x => console.log(x))
+					.catch(x => console.log('Canceled'))
+			}
+
+			function list(){
+				const myList = [
+					new Poppet.ListItem('One','one'),
+					new Poppet.ListItem('Two','two'),
+					new Poppet.ListItem('Three','three'),
+					new Poppet.ListItem('Four','four'),
+					Poppet.ListItem('Five','five'),
+					{ label: 'Six', value: 'six' },
+					Poppet.ListItem('Five','five'),
+					Poppet.ListItem('Five','five'),
+					Poppet.ListItem('Five','five'),
+				]
+
+				Poppet.list('This is the text', myList)
+					.then(x => console.log(x))
+					.catch(x => console.log(x, 'Canceled'))
+			}
+		</script>
+		<button onclick="run()">Open Alert</button>
+		<button onclick="input()">Open Input</button>
+		<button onclick="list()">Open List Selector</button>
+        <div class="test">asd</div>
+        <script src="dist/main.js"></script>
+	</body>
+</html>

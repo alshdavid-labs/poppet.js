@@ -23,7 +23,10 @@ export class AnimatorComponent extends Component {
 	render(){
 		return (
 			<div
-				className={'poppet-animation-host ' + (this.state.doAnimate ? 'animateIn' : 'animateOut')}
+				className={
+					'poppet-animation-host ' +
+					(this.state.doAnimate ? 'animateIn' : 'animateOut')
+				}
 				style={{
 					animationDuration: config.transitionTime + 'ms'
 				}}>
