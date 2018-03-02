@@ -1,7 +1,5 @@
 import { h, render, Component } from 'preact';
-import { renderAlertComponent } from './components/alert/alert.component'
-import { renderInputComponent } from './components/input/input.component'
-import { renderListSelectorComponent } from './components/list-selector/list-selector.component'
+import { renderListSelectorComponent, renderAlertComponent, renderInputComponent } from './components/popups'
 
 
 class Poppet {

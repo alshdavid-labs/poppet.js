@@ -1,8 +1,7 @@
 import { h, render, Component } from 'preact';
 import styles from './list-selector.component.less'
-import { appendComponent, removeComponent } from '../../services/popups.service'
-import { BackgroundComponent } from '../background/background.component'
-import { AnimationComponent } from "../animation/animation.component"
+import { appendComponent, removeComponent } from '../../../services/popups.service'
+import { PanelComponent, BackgroundComponent, AnimationComponent } from "../../infrastructure"
 
 export class ListSelectorComponent extends Component {
 	constructor(){
@@ -13,12 +12,12 @@ export class ListSelectorComponent extends Component {
 		}
 	}
 
-	ok = () => {
-		if (!this.state.text) {
+	ok = (value) => {
+		if (!value) {
 			this.cancel()
 			return
 		}
-		this.props.ok(this.state.text)
+		this.props.ok(value)
 		this.completeAnimation()
 	}
 
@@ -40,7 +39,7 @@ export class ListSelectorComponent extends Component {
 			<div class={styles.host}>
 				<BackgroundComponent onClick={() => this.cancel()} />
 				<AnimationComponent animate={this.state.doAnimation}>
-					<article>
+					<PanelComponent>
 						{ this.props.message && <p>{this.props.message}</p> }
 						<ul>
 							{
@@ -50,16 +49,10 @@ export class ListSelectorComponent extends Component {
 							}
 						</ul>
 						<div class={styles.container}>
-							<button
-								onClick={() => this.ok()}>
-								Select
-							</button>
-							<button
-								onClick={() => this.cancel()}>
-								Cancel
-							</button>
+							<button onClick={() => this.ok()}>Ok</button>
+							<button onClick={() => this.cancel()}>Cancel</button>
 						</div>
-					</article>
+					</PanelComponent>
 				</AnimationComponent>
 			</div>
 		)

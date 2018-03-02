@@ -1,8 +1,7 @@
 import { h, render, Component } from "preact"
 import styles from "./alert.component.less"
-import { appendComponent, removeComponent } from "../../services/popups.service"
-import { BackgroundComponent } from "../background/background.component"
-import { AnimationComponent } from "../animation/animation.component"
+import { appendComponent, removeComponent } from "../../../services/popups.service"
+import { PanelComponent, BackgroundComponent, AnimationComponent } from "../../infrastructure"
 
 export class AlertComponent extends Component {
 	constructor() {
@@ -25,19 +24,13 @@ export class AlertComponent extends Component {
 			<div class={styles.host}>
 				<BackgroundComponent onClick={() => this.cancel()} />
 				<AnimationComponent animate={this.state.doAnimation}>
-					<article>
+					<PanelComponent>
 						{ this.props.message && <p>{this.props.message}</p> }
 						<div class={styles.container}>
-							<button
-								onClick={() => this.ok()}>
-								Ok
-							</button>
-							<button
-								onClick={() => this.cancel()}>
-								Cancel
-							</button>
+							<button onClick={() => this.ok()}>Ok</button>
+							<button onClick={() => this.cancel()}>Cancel</button>
 						</div>
-					</article>
+					</PanelComponent>
 				</AnimationComponent>
 			</div>
 		)

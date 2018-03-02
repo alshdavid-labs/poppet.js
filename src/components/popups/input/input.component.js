@@ -1,8 +1,7 @@
 import { h, render, Component } from 'preact';
 import styles from './input.component.less'
-import { appendComponent, removeComponent } from '../../services/popups.service'
-import { BackgroundComponent } from '../background/background.component'
-import { AnimationComponent } from "../animation/animation.component"
+import { appendComponent, removeComponent } from '../../../services/popups.service'
+import { PanelComponent, BackgroundComponent, AnimationComponent } from "../../infrastructure"
 
 export class InputComponent extends Component {
 	constructor(){
@@ -40,23 +39,14 @@ export class InputComponent extends Component {
 			<div class={styles.host}>
 				<BackgroundComponent onClick={() => this.cancel()} />
 				<AnimationComponent animate={this.state.doAnimation}>
-					<article>
+					<PanelComponent>
 						{ this.props.message && <p>{this.props.message}</p> }
-						<input
-							value={this.state.text}
-							placeholder={this.props.placeholder}
-							onChange={this.handleChange} />
+						<input value={this.state.text} placeholder={this.props.placeholder} onChange={this.handleChange} />
 						<div class={styles.container}>
-							<button
-								onClick={() => this.ok()}>
-								Ok
-							</button>
-							<button
-								onClick={() => this.cancel()}>
-								Cancel
-							</button>
+							<button onClick={() => this.ok()}>Ok</button>
+							<button onClick={() => this.cancel()}>Cancel</button>
 						</div>
-					</article>
+					</PanelComponent>
 				</AnimationComponent>
 			</div>
 		)
