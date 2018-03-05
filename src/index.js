@@ -1,6 +1,4 @@
-import { h, render, Component } from 'preact';
 import { renderListSelectorComponent, renderAlertComponent, renderInputComponent } from './components/popups'
-
 
 class Poppet {
 	static alert(message) {
@@ -11,12 +9,16 @@ class Poppet {
 		return renderInputComponent(message, placeholder)
 	}
 
-	static list(message, list) {
-		return renderListSelectorComponent(message, list)
+	static list(message, list, settings) {
+		return renderListSelectorComponent(message, list, settings)
 	}
 
 	static ListItem = function(label, value){
 		return { label, value }
+	}
+
+	static toast() {
+		return
 	}
 }
 

@@ -28,14 +28,42 @@
 					Poppet.ListItem('Five','five'),
 				]
 
-				Poppet.list('This is the text', myList)
+				Poppet.list('This is the text', myList, { multiSelect: false })
 					.then(x => console.log(x))
 					.catch(x => console.log(x, 'Canceled'))
+			}
+
+			function listMulti(){
+				const myList = [
+					new Poppet.ListItem('One','one'),
+					new Poppet.ListItem('Two','two'),
+					new Poppet.ListItem('Three','three'),
+					new Poppet.ListItem('Four','four'),
+					Poppet.ListItem('Five','five'),
+					{ label: 'Six', value: 'six' },
+					Poppet.ListItem('Seven','seven'),
+					Poppet.ListItem('Eight','eight'),
+					Poppet.ListItem('Nine','nine'),
+				]
+
+				Poppet.list('This is the text', myList, { multiSelect: true })
+					.then(x => console.log(x))
+					.catch(x => console.log(x, 'Canceled'))
+			}
+
+			function toast() {
+				Poppet.toast('text', {
+					duration: 2500,
+					style: 'good' //neutral, good, bad, hexcode 
+				})
+					.then(x => console.log('toast done'))
 			}
 		</script>
 		<button onclick="run()">Open Alert</button>
 		<button onclick="input()">Open Input</button>
 		<button onclick="list()">Open List Selector</button>
+		<button onclick="listMulti()">Open Multi List Selector</button>
+		<button onclick="toast()">Open Multi List Selector</button>
         <div class="test">asd</div>
         <script src="dist/main.js"></script>
 	</body>
