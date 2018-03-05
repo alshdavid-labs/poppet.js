@@ -35,8 +35,9 @@ const listItemsList =[
     ...
 ]
 
-Poppet.list( MainText :string, [ ListItems :ListItem ], { 
-    multiSelect: boolean
+Poppet.list( [ ListItems :ListItem ], { 
+    mainText :string
+    multiSelect :boolean
  } )
     .then
     .catch
@@ -47,7 +48,7 @@ Poppet.list( MainText :string, [ ListItems :ListItem ], {
 ```
 Poppet.toast( MainText :string, {
     duration :number,
-    style: enum['default', 'good', 'bad', Hexcode]
+    style :enum['default', 'good', 'bad', Hexcode]
 } )
     .then
     .catch
