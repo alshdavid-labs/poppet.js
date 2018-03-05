@@ -66,7 +66,7 @@ export class ListSelectorComponent extends Component {
                 <BackgroundComponent onClick={() => this.cancel()} />
                 <AnimationComponent animate={this.state.doAnimation}>
                     <PanelComponent>
-                        {this.props.message && <p>{this.props.message}</p>}
+                        {this.props.mainText && <p>{this.props.mainText}</p>}
                         <ul>
                             {this.props.list.map(item => (
                                 <li classList={this.state.selected.includes(item.value) ? 'selected' : ''} onClick={() => this.select(item.value)}>
@@ -89,13 +89,13 @@ export class ListSelectorComponent extends Component {
     }
 }
 
-export function renderListSelectorComponent(message, list, { multiSelect = false } = {}) {
+export function renderListSelectorComponent(list, { mainText = null, multiSelect = false } = {}) {
     return new Promise((resolve, reject) => {
         appendComponent(
             <ListSelectorComponent
                 multiSelect={multiSelect}
                 list={list}
-                message={message}
+                mainText={mainText}
                 ok={resolve}
                 cancel={reject}
             />

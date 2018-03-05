@@ -28,7 +28,10 @@
 					Poppet.ListItem('Five','five'),
 				]
 
-				Poppet.list('This is the text', myList, { multiSelect: false })
+				Poppet.list(myList, { 
+					mainText: 'This is the text',
+					multiSelect: false 
+				})
 					.then(x => console.log(x))
 					.catch(x => console.log(x, 'Canceled'))
 			}
@@ -46,7 +49,10 @@
 					Poppet.ListItem('Nine','nine'),
 				]
 
-				Poppet.list('This is the text', myList, { multiSelect: true })
+				Poppet.list(myList, { 
+					mainText: 'This is the text',
+					multiSelect: true 
+				})
 					.then(x => console.log(x))
 					.catch(x => console.log(x, 'Canceled'))
 			}
@@ -63,7 +69,7 @@
 		<button onclick="input()">Open Input</button>
 		<button onclick="list()">Open List Selector</button>
 		<button onclick="listMulti()">Open Multi List Selector</button>
-		<button onclick="toast()">Open Multi List Selector</button>
+		<button onclick="toast()">Toast</button>
         <div class="test">asd</div>
         <script src="dist/main.js"></script>
 	</body>
