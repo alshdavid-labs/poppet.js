@@ -76,7 +76,7 @@ export class ListSelectorComponent extends Component {
                         </ul>
                         {this.props.multiSelect && (
                             <div classList="container">
-                                <button onClick={() => this.ok()}>Ok</button>
+                                <button disabled={!this.state.selected.length} onClick={() => this.ok()}>Ok</button>
                                 <button onClick={() => this.cancel()}>
                                     Cancel
                                 </button>

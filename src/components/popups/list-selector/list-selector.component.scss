@@ -43,8 +43,12 @@
 			border-bottom: none;
 		}
 
-		&:hover, &.selected {
+		&:hover {
 			background-color: #eeeeee;
+		}
+
+		&.selected {
+			background-color: #e0e0e0;
 		}
 	}
 
@@ -81,6 +85,15 @@
 
 		&:focus, &:active {
 			outline: none;
+		}
+
+		&:disabled {
+			cursor: default;
+			opacity: 0.6;
+
+			&:hover{
+				opacity: 0.6;
+			}
 		}
 	}
 
