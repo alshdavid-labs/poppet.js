@@ -5,7 +5,10 @@ module.exports = {
 			'react-dom': 'preact-compat'
 		}
 	},
-    entry: ['./polyfills.js', './src/index.js'],
+	entry: ['./polyfills.js', './src/index.js'],
+	output: {
+        filename: '../@release/index.min.js'
+    },
     module: {
         rules: [
             { 
