@@ -32,5 +32,4 @@ export class Poppet {
 }
 
 export default Poppet
-
 global.Poppet = Poppet

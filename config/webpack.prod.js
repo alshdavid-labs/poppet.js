@@ -9,6 +9,8 @@ module.exports = {
 	},
 	entry: ['./polyfills.js', './src/index.js'],
 	output: {
+		libraryTarget: 'umd',
+        library: 'global',
         filename: '../@release/index.min.js'
     },
     module: {
