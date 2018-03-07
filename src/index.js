@@ -5,7 +5,7 @@ import {
     renderInputComponent
 } from './components/popups'
 
-class Poppet {
+export class Poppet {
     static alert(message) {
         return renderAlertComponent(message)
     }
