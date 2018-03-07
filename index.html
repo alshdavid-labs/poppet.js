@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head></head>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
 	<body>
 		<script>
 			function run(){
@@ -17,15 +19,10 @@
 
 			function list(){
 				const myList = [
-					new Poppet.ListItem('One','one'),
+					new Poppet.ListItem('<b>test</b>','one'),
 					new Poppet.ListItem('Two','two'),
 					new Poppet.ListItem('Three','three'),
 					new Poppet.ListItem('Four','four'),
-					Poppet.ListItem('Five','five'),
-					{ label: 'Six', value: 'six' },
-					Poppet.ListItem('Five','five'),
-					Poppet.ListItem('Five','five'),
-					Poppet.ListItem('Five','five'),
 				]
 
 				Poppet.list(myList, { 
@@ -38,15 +35,21 @@
 
 			function listMulti(){
 				const myList = [
-					new Poppet.ListItem('One','one'),
-					new Poppet.ListItem('Two','two'),
-					new Poppet.ListItem('Three','three'),
-					new Poppet.ListItem('Four','four'),
-					Poppet.ListItem('Five','five'),
-					{ label: 'Six', value: 'six' },
-					Poppet.ListItem('Seven','seven'),
-					Poppet.ListItem('Eight','eight'),
-					Poppet.ListItem('Nine','nine'),
+					new Poppet.ListLabel('Numbers'),	
+					new Poppet.ListItem('Five','five'),
+					new Poppet.ListItem('Seven','seven'),
+					new Poppet.ListItem('Eight','eight'),
+					new Poppet.ListItem('Nine','nine'),
+					new Poppet.ListLabel('Letters'),	
+					new Poppet.ListItem('a','a'),
+					new Poppet.ListItem('b','b'),
+					new Poppet.ListItem('c','c'),
+					new Poppet.ListItem('d','d'),
+					new Poppet.ListLabel('Animals'),	
+					new Poppet.ListItem('dog','dog'),
+					new Poppet.ListItem('cat','cat'),
+					new Poppet.ListItem('fish','fish'),
+					new Poppet.ListItem('bird','bird'),
 				]
 
 				Poppet.list(myList, { 

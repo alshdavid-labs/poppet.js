@@ -1,25 +1,34 @@
-import { renderListSelectorComponent, renderAlertComponent, renderInputComponent } from './components/popups'
+import './styles.scss'
+import {
+    renderListSelectorComponent,
+    renderAlertComponent,
+    renderInputComponent
+} from './components/popups'
 
 class Poppet {
-	static alert(message) {
-		return renderAlertComponent(message)
-	}
+    static alert(message) {
+        return renderAlertComponent(message)
+    }
 
-	static input(message, placeholder) {
-		return renderInputComponent(message, placeholder)
-	}
+    static input(message, placeholder) {
+        return renderInputComponent(message, placeholder)
+    }
 
-	static list(message, list, settings) {
-		return renderListSelectorComponent(message, list, settings)
-	}
+    static list(message, list, settings) {
+        return renderListSelectorComponent(message, list, settings)
+    }
 
-	static ListItem = function(label, value){
-		return { label, value }
-	}
+    static ListItem = function(label, value) {
+        return { label, value: value || label, isLabel: true }
+    }
 
-	static toast() {
-		return
-	}
+    static ListLabel = function(label) {
+        return { label, isLabel: false }
+    }
+
+    static toast() {
+        return
+    }
 }
 
 global.Poppet = Poppet

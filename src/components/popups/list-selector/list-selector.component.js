@@ -7,7 +7,8 @@ import {
 import {
     PanelComponent,
     BackgroundComponent,
-    AnimationComponent
+    AnimationComponent,
+    ContainerComponent
 } from "../../infrastructure"
 
 export class ListSelectorComponent extends Component {
@@ -62,16 +63,19 @@ export class ListSelectorComponent extends Component {
 
     render() {
         return (
-            <div classList="poppet-popup-list-host">
+            <ContainerComponent classList="poppet-popup-list-host">
                 <BackgroundComponent onClick={() => this.cancel()} />
                 <AnimationComponent animate={this.state.doAnimation}>
                     <PanelComponent>
                         {this.props.mainText && <p>{this.props.mainText}</p>}
                         <ul>
                             {this.props.list.map(item => (
-                                <li classList={this.state.selected.includes(item.value) ? 'selected' : ''} onClick={() => this.select(item.value)}>
-                                    {item.label}
-                                </li>
+                                item.isLabel 
+                                ?   <li 
+                                        classList={this.state.selected.includes(item.value) ? 'selected' : ''} 
+                                        onClick={() => this.select(item.value)}
+                                        >{item.label}</li>
+                                :   <li classList="label">{item.label}</li>
                             ))}
                         </ul>
                         {this.props.multiSelect && (
@@ -84,7 +88,7 @@ export class ListSelectorComponent extends Component {
                         )}
                     </PanelComponent>
                 </AnimationComponent>
-            </div>
+            </ContainerComponent>
         )
     }
 }
