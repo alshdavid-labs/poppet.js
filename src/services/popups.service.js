@@ -11,6 +11,7 @@ export function appendComponent(element){
     outlet = document.createElement('div')
     outlet.classList.add('poppet-host')
     outlet.style.opacity = 0
+    outlet.style.transition = `opacity ${config.transitionTime}ms`
     document.body.appendChild(outlet)
     render(element, outlet, null)
     setTimeout(()=>outlet.style.opacity = 1, 10)
