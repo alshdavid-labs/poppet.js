@@ -10,6 +10,8 @@ export function appendComponent(element){
 
     outlet = document.createElement('div')
     outlet.classList.add('poppet-host')
+    outlet.style.zIndex = 99999999999999999999999999999999999999999999999
+    outlet.style.position = 'relative'
     outlet.style.opacity = 0
     outlet.style.transition = `opacity ${config.transitionTime}ms`
     document.body.appendChild(outlet)
