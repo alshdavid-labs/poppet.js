@@ -1,5 +1,11 @@
-.poppet-host * {
-    user-select: none;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+.poppet-host {
+    position: relative;
+    z-index: 99999999999999999999999999999999999999999999999;
+    transition: opacity 0s;
+    
+    * {
+        user-select: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
 }
